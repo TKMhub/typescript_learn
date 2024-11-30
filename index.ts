@@ -34,3 +34,10 @@ const person3 = {
   name: { firstName: "Jack", lastName: "xxx" },
   age: 21,
 };
+
+//配列
+const fluits: string[] = ["Apple", "Banana", "grape"];
+const fluits2: any[] = ["Apple", "Banana", "grape"];
+const fluits3: (string | number)[] = ["Apple", "Banana", "grape", 1];
+// const fuluits: string[] = ["Apple", "Banana", "grape", 1]; →×
+//fluits.forEach()
