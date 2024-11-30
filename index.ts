@@ -41,3 +41,8 @@ const fluits2: any[] = ["Apple", "Banana", "grape"];
 const fluits3: (string | number)[] = ["Apple", "Banana", "grape", 1];
 // const fuluits: string[] = ["Apple", "Banana", "grape", 1]; →×
 //fluits.forEach()
+
+//タプル   配列の強化版で、オブジェクトには劣るイメージ
+const book: [string, number, boolean] = ["Business", 1500, false];
+// ※タプルでは型推論してくれない→必ず型推論
+book.push(21); //これはOK・・・TypeScriptでhじゃ初期値に厳しい
