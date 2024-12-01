@@ -46,3 +46,14 @@ const fluits3: (string | number)[] = ["Apple", "Banana", "grape", 1];
 const book: [string, number, boolean] = ["Business", 1500, false];
 // ※タプルでは型推論してくれない→必ず型推論
 book.push(21); //これはOK・・・TypeScriptでhじゃ初期値に厳しい
+
+// Enum型（列挙型）
+const CoffeSize = {
+  SHORT: "SHORT",
+  TALL: "TALL",
+};
+
+const coffe = {
+  hot: true,
+  size: "SHORT",
+};
