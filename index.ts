@@ -61,3 +61,21 @@ const coffe = {
 // coffe.size = true  →エラー
 // coffe.size = 'SHORT'  →エラー
 coffe.size = CoffeSize.SHORT; //→OK
+
+enum CoffeSize2 { //OK（メモリの縮小）
+  SHORT,
+  TALL,
+}
+enum CoffeSize3 { //OK（メモリの縮小）
+  SHORT = 2,
+  TALL,
+}
+// enum CoffeSize4 { //NG
+//   SHORT = "string",
+//   TALL,
+// }
+
+const coffe2 = {
+  hot: true,
+  size: CoffeSize2.SHORT, //→0, 1, ...となる
+};
