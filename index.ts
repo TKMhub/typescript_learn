@@ -48,12 +48,16 @@ const book: [string, number, boolean] = ["Business", 1500, false];
 book.push(21); //これはOK・・・TypeScriptでhじゃ初期値に厳しい
 
 // Enum型（列挙型）
-const CoffeSize = {
-  SHORT: "SHORT",
-  TALL: "TALL",
-};
+enum CoffeSize {
+  SHORT = "SHORT",
+  TALL = "TALL",
+}
 
 const coffe = {
   hot: true,
-  size: "SHORT",
+  size: CoffeSize.SHORT,
 };
+
+// coffe.size = true  →エラー
+// coffe.size = 'SHORT'  →エラー
+coffe.size = CoffeSize.SHORT; //→OK
