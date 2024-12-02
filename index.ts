@@ -1,4 +1,4 @@
-// type annotation　型注釈
+// ⭐️type annotation　型注釈
 let hasValue: boolean = true;
 let count: number = 10;
 let float: number = 3.14;
@@ -10,11 +10,11 @@ let back: string = `hello`;
 // 　・初期化しない場合
 // 　・数値や文字列等を入れてしまう場合
 
-//型推論　　　※毎回型推論でOK
+//⭐️型推論　　　※毎回型推論でOK
 let back2 = `hello`;
 // back2 = 2 →×
 
-//オブジェクトに型（型注釈）
+//⭐️オブジェクトに型（型注釈）
 const person: {
   name: string;
   age: number;
@@ -35,19 +35,19 @@ const person3 = {
   age: 21,
 };
 
-//配列
+//⭐️配列
 const fluits: string[] = ["Apple", "Banana", "grape"];
 const fluits2: any[] = ["Apple", "Banana", "grape"];
 const fluits3: (string | number)[] = ["Apple", "Banana", "grape", 1];
 // const fuluits: string[] = ["Apple", "Banana", "grape", 1]; →×
 //fluits.forEach()
 
-//タプル   配列の強化版で、オブジェクトには劣るイメージ
+//⭐️タプル   配列の強化版で、オブジェクトには劣るイメージ
 const book: [string, number, boolean] = ["Business", 1500, false];
 // ※タプルでは型推論してくれない→必ず型推論
 book.push(21); //これはOK・・・TypeScriptでhじゃ初期値に厳しい
 
-// Enum型（列挙型）
+// ⭐️Enum型（列挙型）
 enum CoffeSize {
   SHORT = "SHORT",
   TALL = "TALL",
@@ -79,3 +79,13 @@ const coffe2 = {
   hot: true,
   size: CoffeSize2.SHORT, //→0, 1, ...となる
 };
+
+//⭐️any型・・・なんでも入る
+//JSをTSに移行する際には有効であるが、正しくタイプスクリプトを描きたい場合はなるべく使わない
+let anything: any = true;
+anything = "hello";
+anything = 1;
+anything = {};
+anything.a = "hello"; //オブジェクトへの代入（基本的にはありえない）
+let banana: string = "banana";
+banana = anything; //OK
