@@ -89,3 +89,11 @@ anything = {};
 anything.a = "hello"; //オブジェクトへの代入（基本的にはありえない）
 let banana: string = "banana";
 banana = anything; //OK
+
+// ⭐️Union型
+let unionType: number | string = 10;
+// unionType.toUpperCase() →エラー
+unionType = "Hello";
+unionType.toUpperCase();
+
+let unionTypes: (number | string)[] = [21, "Hello"];
