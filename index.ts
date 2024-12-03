@@ -97,3 +97,27 @@ unionType = "Hello";
 unionType.toUpperCase();
 
 let unionTypes: (number | string)[] = [21, "Hello"];
+
+// ⭐️literal型
+const apple: "apple" = "apple"; //appleのみ
+// const apple2: "apple" = "a";  →×
+// ※シングルクウォート、ダブルクウォート・・・OK
+const banana2 = "banana"; //・・・literal型となる
+
+// どういう時に利用？
+// "small" or "medium" or "large" or "small"
+let clothSaze: "small" | "medium" | "large" = "small";
+const cloth = {
+  color: "white",
+  size: clothSaze, //literal型になる
+};
+// cloth.size = "large"; →NG
+const cloth2: {
+  //こっちのがベター！
+  color: "white";
+  size: "small" | "medium" | "large"; //literal型になる
+} = {
+  color: "white",
+  size: clothSaze, //literal型になる
+};
+cloth2.size = "large";
