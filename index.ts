@@ -121,3 +121,48 @@ const cloth2: {
   size: clothSaze, //literal型になる
 };
 cloth2.size = "large";
+
+//⭐️Typeエイリアス
+type ClothSize = "S" | "M" | "L";
+let ClothSize: ClothSize = "L";
+const cloth3: {
+  color: string;
+  size: ClothSize;
+} = {
+  color: "white",
+  size: "L",
+};
+
+//⭐️関数の型
+// パラメータには必ず型をつけて
+// 戻り値には型推論が効くのでなくてOK・・・ドキュメントとして扱うならあっても良いくらい
+function add(num1: number, num2: number): number {
+  return num1 + num2;
+}
+add(2, 3);
+// add("string", 3); →NG
+
+//戻り値がない場合にはvoid型となる・・・undefindが返ってくる
+function sayHello() {
+  console.log("Hello");
+}
+//NG　これはダメ！ undefindを戻り値にするのはダメ！・・・使える？？
+function sayHello2(): undefined {
+  console.log("Hello");
+}
+function sayHello3(): undefined {
+  console.log("Hello");
+  return;
+}
+function sayHello4(): void {
+  console.log("Hello");
+}
+function sayHello5(): void {
+  console.log("Hello");
+  return;
+}
+
+// ⭐️undefind型（滅多に使わない） → voidを使う！！！
+//型注釈しない場合にはanyになるのでなくてOK
+//明示的にundefinedを返したい場合、かつドキュメントとしたい場合にはこちらを使う
+let tmp: undefined;
