@@ -166,3 +166,15 @@ function sayHello5(): void {
 //型注釈しない場合にはanyになるのでなくてOK
 //明示的にundefinedを返したい場合、かつドキュメントとしたい場合にはこちらを使う
 let tmp: undefined;
+
+//⭐️never型（型推論ではvoid）
+//決して何も返さない
+function error(message: string): never {
+  throw new Error(message);
+}
+console.log(error("this is an error"));
+
+//型推論でnever
+const error2 = function error(message: string) {
+  throw new Error(message);
+};
