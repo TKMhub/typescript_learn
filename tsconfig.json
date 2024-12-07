@@ -118,5 +118,7 @@
     //もしexcludeも書かなければ、node_modulesはデフォルトで除外される
     // →書く場合には必ずnode_modulesを記載するようにする
     "node_modules"
-  ]
+  ],
+  // files・・絶対パスや相対パスのみ指定可能
+  "files": ["tmp/compiler.ts"]
 }
