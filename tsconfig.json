@@ -108,7 +108,7 @@
 
     /* Type Checking */
     //⭐️下記の間を全て有効にするか、strictを有効にするかで同じ設定となる
-    "strict": true /* Enable all strict type-checking options. */,
+    // "strict": true /* Enable all strict type-checking options. */,
     // "noImplicitAny": true,                            /* Enable error reporting for expressions and declarations with an implied 'any' type. */
     // "strictNullChecks": true,                         /* When type checking, take into account 'null' and 'undefined'. */
     // "strictFunctionTypes": true,                      /* When assigning functions, check to ensure parameters and the return values are subtype-compatible. */
@@ -118,6 +118,20 @@
     // "useUnknownInCatchVariables": true,               /* Default catch clause variables as 'unknown' instead of 'any'. */
     //💫
 
+    //⭐️strictNullChecks
+    //デフォルトではstringの中にundefindやnullも含んでいることを認識する
+    //この場合にはUnion型（|・・・OR演算子）を利用
+    // "strictNullChecks": true /* When type checking, take into account 'null' and 'undefined'. */,
+    //⭐️クラスの継承時に起こりえるバグの可能性を防ぐ
+    // "strictFunctionTypes": true,                      /* When assigning functions, check to ensure parameters and the return values are subtype-compatible. */
+    //⭐️Bind、Call、Applyに使える
+    //echo.Call()等の引数の型や個数を厳しくチェック
+    // "strictBindCallApply": true,                      /* Check that the arguments for 'bind', 'call', and 'apply' methods match the original function. */
+    //⭐️クラスを使用する時に使用
+    // "strictPropertyInitialization": true,             /* Check for class properties that are declared but not set in the constructor. */
+    //⭐️Thisがわからない時、暗黙的にanyとなる際にエラーとなる
+    // "noImplicitThis": true,                           /* Enable error reporting when 'this' is given the type 'any'. */
+    //⭐️JS変換する際に、コンパイルをするときに"use strict"をつけるかどうか
     // "alwaysStrict": true,                             /* Ensure 'use strict' is always emitted. */
     // "noUnusedLocals": true,                           /* Enable error reporting when local variables aren't read. */
     // "noUnusedParameters": true,                       /* Raise an error when a function parameter isn't read. */
