@@ -133,10 +133,19 @@
     // "noImplicitThis": true,                           /* Enable error reporting when 'this' is given the type 'any'. */
     //⭐️JS変換する際に、コンパイルをするときに"use strict"をつけるかどうか
     // "alwaysStrict": true,                             /* Ensure 'use strict' is always emitted. */
+
+    //⭐️ローカル変数の対して使用していなけてば警告がでて、コンパイル時にはエラーが出る
     // "noUnusedLocals": true,                           /* Enable error reporting when local variables aren't read. */
+
+    //⭐️関数のパラメータが使われないと、警告が出て、コンパイル時にエラーが出る
+    //暗黙的なリターンはダメ
+    //リターンを明示しろ！！
     // "noUnusedParameters": true,                       /* Raise an error when a function parameter isn't read. */
+
     // "exactOptionalPropertyTypes": true,               /* Interpret optional property types as written, rather than adding 'undefined'. */
     // "noImplicitReturns": true,                        /* Enable error reporting for codepaths that do not explicitly return in a function. */
+
+    //⭐️Switch文で検査をしてくれる
     // "noFallthroughCasesInSwitch": true,               /* Enable error reporting for fallthrough cases in switch statements. */
     // "noUncheckedIndexedAccess": true,                 /* Add 'undefined' to a type when accessed using an index. */
     // "noImplicitOverride": true,                       /* Ensure overriding members in derived classes are marked with an override modifier. */
