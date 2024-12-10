@@ -1,7 +1,12 @@
 {
+  //⭐️extends・・・設定ファイルを継承することができる。その他、同じ設定は上書き
+  // 別のコンフィグ設定をすることができる
+  "extends": "./tsconfig.base.json",
+
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
+    //⭐️TSのプロジェクトを一括で複数管理する際に変更することがある
     /* Projects */
     // "incremental": true,                              /* Save .tsbuildinfo files to allow for incremental compilation of projects. */
     // "composite": true,                                /* Enable constraints that allow a TypeScript project to be used with project references. */
@@ -99,11 +104,19 @@
     // "preserveValueImports": true,                     /* Preserve unused imported values in the JavaScript output that would otherwise be removed. */
 
     /* Interop Constraints */
+
+    //⭐️TSファイルを独立した１つのファイルと解釈できない場合にエラー
+    //TS→JSの時にTSC以外の方法で変換したい時、バベルとか、、、
+    //1つのファイルごとに変換が行われることが多い
+    //解釈できないものは警告するようなもの
     // "isolatedModules": true,                          /* Ensure that each file can be safely transpiled without relying on other imports. */
+
     // "verbatimModuleSyntax": true,                     /* Do not transform or elide any imports or exports not marked as type-only, ensuring they are written in the output file's format based on the 'module' setting. */
     // "allowSyntheticDefaultImports": true,             /* Allow 'import x from y' when a module doesn't have a default export. */
     "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
     // "preserveSymlinks": true,                         /* Disable resolving symlinks to their realpath. This correlates to the same flag in node. */
+
+    //⭐️ファイルの大文字と小文字を区別する
     "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
 
     /* Type Checking */
@@ -155,6 +168,8 @@
 
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
+    //⭐️.d.tsの検査に関してはスキップ
+    //重くならずに動作がサクサク
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
   //tscコマンドのコンパイルから除外する ワイルドカードOK
