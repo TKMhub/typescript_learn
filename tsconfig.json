@@ -177,7 +177,7 @@
   "include": ["index.ts"],
   //excludeしたものが除外される
   "exclude": [
-    "tmp/compiler.ts",
+    "section1_3/tmp/compiler.ts",
     // どのディレクトリ内のtsファイルもコンパイルされなくなる
     "**/compiler.ts",
     "*.spec.ts",
@@ -186,5 +186,5 @@
     "node_modules"
   ],
   // files・・絶対パスや相対パスのみ指定可能
-  "files": ["tmp/compiler.ts"]
+  "files": ["section1_3/tmp/compiler.ts"]
 }
