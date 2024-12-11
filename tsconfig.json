@@ -1,7 +1,7 @@
 {
   //⭐️extends・・・設定ファイルを継承することができる。その他、同じ設定は上書き
   // 別のコンフィグ設定をすることができる
-  "extends": "./tsconfig.base.json",
+  // "extends": "./tsconfig.base.json",
 
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
@@ -80,7 +80,7 @@
     //⭐️今ではほとんど使わない古い設定・・・出力先を決められる　指定されたフォルダにコンパイル結果のJSが作成される
     // "outFile": "./",                                  /* Specify a file that bundles all outputs into one JavaScript file. If 'declaration' is true, also designates a file that bundles all .d.ts output. */
     //⭐️今ではほとんど使わない古い設定・・・出力先を決められる
-    // "outDir": "./",                                   /* Specify an output folder for all emitted files. */
+    "outDir": "./dist" /* Specify an output folder for all emitted files. */,
     //⭐️コンパイル結果のコメントを消す
     // "removeComments": true,                           /* Disable emitting comments. */
     //⭐️何も出力しない・・・型のチェックだけする
@@ -171,20 +171,23 @@
     //⭐️.d.tsの検査に関してはスキップ
     //重くならずに動作がサクサク
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
-  },
+  }
   //tscコマンドのコンパイルから除外する ワイルドカードOK
   //includeしたものがコンパイルされる
-  "include": ["index.ts"],
+  // "include": ["index.ts"],
   //excludeしたものが除外される
-  "exclude": [
-    "section1_3/tmp/compiler.ts",
-    // どのディレクトリ内のtsファイルもコンパイルされなくなる
-    "**/compiler.ts",
-    "*.spec.ts",
-    //もしexcludeも書かなければ、node_modulesはデフォルトで除外される
-    // →書く場合には必ずnode_modulesを記載するようにする
-    "node_modules"
-  ],
+  // "exclude": [
+  //     "section1_3_general/*",
+  // ],
+  // "exclude": [
+  //   "section1_3/tmp/compiler.ts",
+  //   // どのディレクトリ内のtsファイルもコンパイルされなくなる
+  //   "**/compiler.ts",
+  //   "*.spec.ts",
+  //   //もしexcludeも書かなければ、node_modulesはデフォルトで除外される
+  //   // →書く場合には必ずnode_modulesを記載するようにする
+  //   "node_modules"
+  // ]
   // files・・絶対パスや相対パスのみ指定可能
-  "files": ["section1_3/tmp/compiler.ts"]
+  // "files": ["section1_3/tmp/compiler.ts"]
 }

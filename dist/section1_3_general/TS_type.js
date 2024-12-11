@@ -1,4 +1,3 @@
-"use strict";
 // ⭐️type annotation　型注釈
 let hasValue = true;
 let count = 10;
@@ -14,7 +13,7 @@ let back = `hello`;
 let back2 = `hello`;
 // back2 = 2 →×
 //⭐️オブジェクトに型（型注釈）
-const person = {
+const person100 = {
     name: "Jack",
     age: 21,
 };
@@ -148,3 +147,4 @@ console.log(error("this is an error"));
 const error2 = function error(message) {
     throw new Error(message);
 };
+//# sourceMappingURL=TS_type.js.map

@@ -15,7 +15,7 @@ let back2 = `hello`;
 // back2 = 2 →×
 
 //⭐️オブジェクトに型（型注釈）
-const person: {
+const person100: {
   name: string;
   age: number;
 } = {
