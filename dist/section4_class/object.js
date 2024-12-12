@@ -16,7 +16,16 @@ class Person {
     constructor(initName) {
         this.name = initName;
     }
+    greeting() {
+        console.log(`Hello! My name is ${this.name}`);
+    }
 }
+// console.log(quill);
 const quill = new Person("Quill");
-console.log(quill);
+quill.greeting();
+const anotherQuill = {
+    name: "anotherQuill",
+    anotherGreeting: quill.greeting,
+};
+anotherQuill.anotherGreeting();
 //# sourceMappingURL=object.js.map
