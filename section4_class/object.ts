@@ -52,4 +52,3 @@ const anotherQuill = {
 };
 
 anotherQuill.anotherGreeting();
-anotherQuill.anotherGreeting();
