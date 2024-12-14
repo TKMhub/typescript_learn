@@ -8,15 +8,14 @@ declare const person: {
 };
 declare class Person {
     name: string;
-    constructor(initName: string);
+    age: number;
+    constructor(initName: string, initAge: number);
     greeting(this: {
         name: string;
     }): void;
+    greeting2: () => void;
+    greeting3(this: Person): void;
+    incrementAge(): void;
 }
+declare let person5: Person;
 declare const quill: Person;
-declare const anotherQuill: {
-    name: string;
-    anotherGreeting: (this: {
-        name: string;
-    }) => void;
-};
