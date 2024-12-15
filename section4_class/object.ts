@@ -79,19 +79,47 @@ quill.greeting3();
 
 //⭐️初期化の処理を省略する方法
 class Person2 {
-  // public name: string;
-  private age2: number;
-
   //⭐️初期化の処理を省略する方法
-  constructor(public name2: string, initAge: number) {
-    this.age2 = initAge;
+  // public name: string;
+  // private age2: number;
+
+  //下記の書き方もOK　※privateの後にreadonryを付け加える
+  private readonly id: number = 32;
+
+  //⭐️Readonly修飾子
+  //⭐️protected修飾子・・・継承先ではアクセス可能であるが、外からのアクセスは不可能となる
+  constructor(public readonly name2: string, protected readonly age2: number) {}
+  //Readonly修飾子によって、クラス内外にて値の変更ができなくなる
+  //不意に書き換えてしまうようなミスを防ぐことができる
+  incrementAge() {
+    // this.age2 += 1;
   }
 
   greeting3(this: Person2) {
     console.log(`Hello! My name is ${this.name2}. I am ${this.age2} years old`);
   }
+}
 
-  incrementAge() {
-    this.age2 += 1;
+let person4 = Person2;
+const quill4 = new Person2("Quill", 30);
+// 読み取り専用プロパティであるため、'age2' に代入することはできません。ts(2540)
+// プロパティ 'age2' はプライベートで、クラス 'Person2' 内でのみアクセスできます。ts(2341)
+// quill4.age2 = 50;  →NG
+
+//⭐️継承 extends
+class Teacher extends Person2 {
+  // 派生クラスのコンストラクターには 'super' の呼び出しを含める必要があります。ts(2377)
+  constructor(name: string, age: number, public subject: string) {
+    super(name, age); //このsuperはPerson3クラスのコンストラクタ関数のことを指す
+  }
+
+  greeting3() {
+    console.log(
+      `Hello! My name is ${this.name2}. I am ${this.age2} years old. I teach ${this.subject}`
+    );
   }
 }
+
+const teacher = new Teacher("Quill", 38, "math");
+console.log("継承");
+teacher.greeting3();

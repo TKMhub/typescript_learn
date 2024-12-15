@@ -8,7 +8,7 @@ declare const person: {
 };
 declare class Person {
     name: string;
-    age: number;
+    private age;
     constructor(initName: string, initAge: number);
     greeting(this: {
         name: string;
@@ -19,3 +19,16 @@ declare class Person {
 }
 declare let person5: Person;
 declare const quill: Person;
+declare class Person2 {
+    readonly name2: string;
+    private readonly age2;
+    private readonly id;
+    constructor(name2: string, age2: number);
+    incrementAge(): void;
+    greeting3(this: Person2): void;
+}
+declare let person4: typeof Person2;
+declare const quill4: Person2;
+declare class Teacher extends Person2 {
+}
+declare const teacher: Teacher;

@@ -13,6 +13,7 @@ const person = {
 //クラス名は大文字
 class Person {
     //初期化・・・オブジェクトが作成される時に一番初めに実行される関数
+    // constructor(initName: string, initAge: number) {
     constructor(initName, initAge) {
         //⭐️アロー関数は定義時にthisが決まる
         this.greeting2 = () => {
@@ -31,19 +32,60 @@ class Person {
         console.log(`Hello! My name is ${this.name}. I am ${this.age} years old`);
     }
     incrementAge() {
+        // ⭐️プライベート修飾子歯メソッドにも利用可能
+        // private incrementAge() {
         this.age += 1;
     }
 }
 let person5;
 // console.log(quill);
 const quill = new Person("Quill", 38);
-quill.incrementAge();
-quill.greeting3();
 // const anotherQuill = {
 //   name: "anotherQuill",
 //   greeting() {},
 //   anotherGreeting: quill.greeting,
 // };
 // anotherQuill.anotherGreeting();
-// ⭐️パブリック修飾子、プライベート修飾子
+// ⭐️パブリック修飾子
+quill.incrementAge();
+// quill.age = 43; →これも可能となる
+quill.greeting3();
+//⭐️プライベート修飾子
+quill.incrementAge();
+// quill.age = 43; →プライベートの場合には代入不可NG
+//console.log(quill.age); →プライベートの場合には呼び出し不可NG
+// プロパティ 'age' はプライベートで、クラス 'Person' 内でのみアクセスできます。ts(2341)
+quill.greeting3();
+//⭐️初期化の処理を省略する方法
+class Person2 {
+    //⭐️Readonly修飾子
+    constructor(name2, age2) {
+        this.name2 = name2;
+        this.age2 = age2;
+        //⭐️初期化の処理を省略する方法
+        // public name: string;
+        // private age2: number;
+        //下記の書き方もOK　※privateの後にreadonryを付け加える
+        this.id = 32;
+    }
+    //Readonly修飾子によって、クラス内外にて値の変更ができなくなる
+    //不意に書き換えてしまうようなミスを防ぐことができる
+    incrementAge() {
+        // this.age2 += 1;
+    }
+    greeting3() {
+        console.log(`Hello! My name is ${this.name2}. I am ${this.age2} years old`);
+    }
+}
+let person4 = Person2;
+const quill4 = new Person2("Quill", 30);
+// 読み取り専用プロパティであるため、'age2' に代入することはできません。ts(2540)
+// プロパティ 'age2' はプライベートで、クラス 'Person2' 内でのみアクセスできます。ts(2341)
+// quill4.age2 = 50;  →NG
+//⭐️継承 extends
+class Teacher extends Person2 {
+}
+const teacher = new Teacher("Quill", 38);
+console.log("継承");
+teacher.greeting3();
 //# sourceMappingURL=object.js.map
