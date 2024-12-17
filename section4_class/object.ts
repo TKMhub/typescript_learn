@@ -108,8 +108,28 @@ const quill4 = new Person2("Quill", 30);
 
 //⭐️継承 extends
 class Teacher extends Person2 {
+  //⭐️getter
+  // 'get' アクセサーは値を返す必要があります。ts(2378)
+  get subject(): string {
+    if (!this._subject) {
+      throw new Error("There is no subject.");
+    }
+    // return "music";
+    return this._subject;
+  }
+
+  //⭐️setter
+  // 'set' アクセサーにはパラメーターを 1 つだけ指定しなければなりません。ts(1049)
+  //(parameter) value: string・・・getterの型を型推測する(名前がちがければ反映しない)
+  set subject(value) {
+    if (!value) {
+      throw new Error("There is no subject.");
+    }
+    this._subject = value;
+  }
+
   // 派生クラスのコンストラクターには 'super' の呼び出しを含める必要があります。ts(2377)
-  constructor(name: string, age: number, public subject: string) {
+  constructor(name: string, age: number, private _subject: string) {
     super(name, age); //このsuperはPerson3クラスのコンストラクタ関数のことを指す
   }
 
@@ -123,3 +143,10 @@ class Teacher extends Person2 {
 const teacher = new Teacher("Quill", 38, "math");
 console.log("継承");
 teacher.greeting3();
+
+//⭐️getter
+// ※ES5以上のみgetterとsetterは存在する
+console.log(teacher.subject);
+
+//⭐️setter
+teacher.subject = "faf";

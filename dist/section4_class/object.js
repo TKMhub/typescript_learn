@@ -59,6 +59,7 @@ quill.greeting3();
 //⭐️初期化の処理を省略する方法
 class Person2 {
     //⭐️Readonly修飾子
+    //⭐️protected修飾子・・・継承先ではアクセス可能であるが、外からのアクセスは不可能となる
     constructor(name2, age2) {
         this.name2 = name2;
         this.age2 = age2;
@@ -84,8 +85,38 @@ const quill4 = new Person2("Quill", 30);
 // quill4.age2 = 50;  →NG
 //⭐️継承 extends
 class Teacher extends Person2 {
+    //⭐️getter
+    // 'get' アクセサーは値を返す必要があります。ts(2378)
+    get subject() {
+        if (!this._subject) {
+            throw new Error("There is no subject.");
+        }
+        // return "music";
+        return this._subject;
+    }
+    //⭐️setter
+    // 'set' アクセサーにはパラメーターを 1 つだけ指定しなければなりません。ts(1049)
+    //(parameter) value: string・・・getterの型を型推測する(名前がちがければ反映しない)
+    set subject(value) {
+        if (!value) {
+            throw new Error("There is no subject.");
+        }
+        this._subject = value;
+    }
+    // 派生クラスのコンストラクターには 'super' の呼び出しを含める必要があります。ts(2377)
+    constructor(name, age, _subject) {
+        super(name, age); //このsuperはPerson3クラスのコンストラクタ関数のことを指す
+        this._subject = _subject;
+    }
+    greeting3() {
+        console.log(`Hello! My name is ${this.name2}. I am ${this.age2} years old. I teach ${this.subject}`);
+    }
 }
-const teacher = new Teacher("Quill", 38);
+const teacher = new Teacher("Quill", 38, "math");
 console.log("継承");
 teacher.greeting3();
+//⭐️getter
+console.log(teacher.subject);
+//⭐️setter
+teacher.subject = "faf";
 //# sourceMappingURL=object.js.map

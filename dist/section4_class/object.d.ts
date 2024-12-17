@@ -21,7 +21,7 @@ declare let person5: Person;
 declare const quill: Person;
 declare class Person2 {
     readonly name2: string;
-    private readonly age2;
+    protected readonly age2: number;
     private readonly id;
     constructor(name2: string, age2: number);
     incrementAge(): void;
@@ -30,5 +30,10 @@ declare class Person2 {
 declare let person4: typeof Person2;
 declare const quill4: Person2;
 declare class Teacher extends Person2 {
+    private _subject;
+    get subject(): string;
+    set subject(value: string);
+    constructor(name: string, age: number, _subject: string);
+    greeting3(): void;
 }
 declare const teacher: Teacher;
