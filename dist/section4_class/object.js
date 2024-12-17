@@ -58,6 +58,10 @@ quill.incrementAge();
 quill.greeting3();
 //⭐️初期化の処理を省略する方法
 class Person2 {
+    static isAdult(age) {
+        if (age > 17)
+            return true;
+    }
     //⭐️Readonly修飾子
     //⭐️protected修飾子・・・継承先ではアクセス可能であるが、外からのアクセスは不可能となる
     constructor(name2, age2) {
@@ -78,6 +82,8 @@ class Person2 {
         console.log(`Hello! My name is ${this.name2}. I am ${this.age2} years old`);
     }
 }
+//⭐️static
+Person2.species = "Homo sapiens";
 let person4 = Person2;
 const quill4 = new Person2("Quill", 30);
 // 読み取り専用プロパティであるため、'age2' に代入することはできません。ts(2540)
@@ -116,7 +122,14 @@ const teacher = new Teacher("Quill", 38, "math");
 console.log("継承");
 teacher.greeting3();
 //⭐️getter
+// ※ES5以上のみgetterとsetterは存在する
 console.log(teacher.subject);
 //⭐️setter
 teacher.subject = "faf";
+//⭐️static・・・インスタンスを作成しなくとも呼び出すことができる　※ES6でも利用可能
+Math.random();
+console.log(Person2.species);
+console.log(Person2.isAdult(32));
+console.log(Teacher.species);
+console.log(Teacher.isAdult(32));
 //# sourceMappingURL=object.js.map

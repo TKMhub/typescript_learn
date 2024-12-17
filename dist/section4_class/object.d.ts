@@ -23,6 +23,8 @@ declare class Person2 {
     readonly name2: string;
     protected readonly age2: number;
     private readonly id;
+    static species: string;
+    static isAdult(age: number): boolean;
     constructor(name2: string, age2: number);
     incrementAge(): void;
     greeting3(this: Person2): void;

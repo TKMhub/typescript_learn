@@ -86,6 +86,13 @@ class Person2 {
   //下記の書き方もOK　※privateの後にreadonryを付け加える
   private readonly id: number = 32;
 
+  //⭐️static
+  static species = "Homo sapiens";
+
+  static isAdult(age: number) {
+    if (age > 17) return true;
+  }
+
   //⭐️Readonly修飾子
   //⭐️protected修飾子・・・継承先ではアクセス可能であるが、外からのアクセスは不可能となる
   constructor(public readonly name2: string, protected readonly age2: number) {}
@@ -134,6 +141,9 @@ class Teacher extends Person2 {
   }
 
   greeting3() {
+    // this.species;・・・> ダメ！NG　　　thisというのは、インスタンス化したものにしか利用できないから
+    //Person2クラスの中でPerson2から呼び出すことは可能
+    Person2.species; //・・・> OK
     console.log(
       `Hello! My name is ${this.name2}. I am ${this.age2} years old. I teach ${this.subject}`
     );
@@ -150,3 +160,11 @@ console.log(teacher.subject);
 
 //⭐️setter
 teacher.subject = "faf";
+
+//⭐️static・・・インスタンスを作成しなくとも呼び出すことができる　※ES6でも利用可能
+Math.random();
+console.log(Person2.species);
+console.log(Person2.isAdult(32));
+//継承しているので利用可能
+console.log(Teacher.species);
+console.log(Teacher.isAdult(32));
