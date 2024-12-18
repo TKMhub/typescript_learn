@@ -78,7 +78,8 @@ quill.incrementAge();
 quill.greeting3();
 
 //⭐️初期化の処理を省略する方法
-class Person2 {
+//abstractクラスについてはインスタンス化することはできない・・・newできない
+abstract class Person2 {
   //⭐️初期化の処理を省略する方法
   // public name: string;
   // private age2: number;
@@ -104,17 +105,28 @@ class Person2 {
 
   greeting3(this: Person2) {
     console.log(`Hello! My name is ${this.name2}. I am ${this.age2} years old`);
+    this.explainJob();
   }
+
+  //⭐️abstractメソッド
+  //①抽象メソッドは抽象クラス内でのみ使用できます。ts(1244)
+  //②メソッド 'explainJob' は abstract に指定されているため、実装を含めることができません。ts(1245)
+  abstract explainJob(): void;
 }
 
 let person4 = Person2;
-const quill4 = new Person2("Quill", 30);
+// const quill4 = new Person2("Quill", 30);
 // 読み取り専用プロパティであるため、'age2' に代入することはできません。ts(2540)
 // プロパティ 'age2' はプライベートで、クラス 'Person2' 内でのみアクセスできます。ts(2341)
 // quill4.age2 = 50;  →NG
 
 //⭐️継承 extends
 class Teacher extends Person2 {
+  //⭐️継承先のクラスで必ずabstractメソッドを実装する必要がある
+  explainJob(): void {
+    console.log(`I am a Teacher and I teach ${this.subject}`);
+  }
+
   //⭐️getter
   // 'get' アクセサーは値を返す必要があります。ts(2378)
   get subject(): string {
@@ -168,3 +180,9 @@ console.log(Person2.isAdult(32));
 //継承しているので利用可能
 console.log(Teacher.species);
 console.log(Teacher.isAdult(32));
+
+const teacher2 = new Teacher("Quill", 1, "aaa");
+teacher2.explainJob();
+
+//⭐️abstractクラスについてはインスタンス化できない→newできないので、下記はNG
+// new Person2();

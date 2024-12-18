@@ -19,7 +19,7 @@ declare class Person {
 }
 declare let person5: Person;
 declare const quill: Person;
-declare class Person2 {
+declare abstract class Person2 {
     readonly name2: string;
     protected readonly age2: number;
     private readonly id;
@@ -28,14 +28,16 @@ declare class Person2 {
     constructor(name2: string, age2: number);
     incrementAge(): void;
     greeting3(this: Person2): void;
+    abstract explainJob(): void;
 }
 declare let person4: typeof Person2;
-declare const quill4: Person2;
 declare class Teacher extends Person2 {
     private _subject;
+    explainJob(): void;
     get subject(): string;
     set subject(value: string);
     constructor(name: string, age: number, _subject: string);
     greeting3(): void;
 }
 declare const teacher: Teacher;
+declare const teacher2: Teacher;
