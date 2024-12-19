@@ -122,6 +122,10 @@ let person4 = Person2;
 
 //⭐️継承 extends
 class Teacher extends Person2 {
+  //⭐️シングルトンパターン
+  //staticなinnsutannceを保持
+  private static instance: Teacher;
+
   //⭐️継承先のクラスで必ずabstractメソッドを実装する必要がある
   explainJob(): void {
     console.log(`I am a Teacher and I teach ${this.subject}`);
@@ -148,7 +152,11 @@ class Teacher extends Person2 {
   }
 
   // 派生クラスのコンストラクターには 'super' の呼び出しを含める必要があります。ts(2377)
-  constructor(name: string, age: number, private _subject: string) {
+
+  //⭐️シングルトンパターン：constractorにprivateをつけると、オブジェクトがnewniyotte
+  //シングルトンパターン・・・クラスからインスタンスを１つしか作れなくなる
+  //例）Teacherはクラスに１里しかいない想定なので、１つしかインスタンス化できないようにする場合がある
+  private constructor(name: string, age: number, private _subject: string) {
     super(name, age); //このsuperはPerson3クラスのコンストラクタ関数のことを指す
   }
 
@@ -160,18 +168,29 @@ class Teacher extends Person2 {
       `Hello! My name is ${this.name2}. I am ${this.age2} years old. I teach ${this.subject}`
     );
   }
+
+  //⭐️シングルトンパターンの場合→クラスの中で使用する
+  // クラス 'Teacher' のコンストラクターはプライベートであり、クラス宣言内でのみアクセス可能です。ts(2673)
+  // →staticのみ利用可能になる
+  static getInstance() {
+    //⭐️一度、staticでprivateなインスタンスに格納することで最終的に唯一無二のインスタンスとなる
+    //もし、インスタンスがあったら、元々のインスタンスを返す
+    if (Teacher.instance) return Teacher.instance;
+    Teacher.instance = new Teacher("Quill", 38, "math");
+    return Teacher.instance;
+  }
 }
 
-const teacher = new Teacher("Quill", 38, "math");
-console.log("継承");
-teacher.greeting3();
+// const teacher = new Teacher("Quill", 38, "math");
+// console.log("継承");
+// teacher.greeting3();
 
-//⭐️getter
-// ※ES5以上のみgetterとsetterは存在する
-console.log(teacher.subject);
+// //⭐️getter
+// // ※ES5以上のみgetterとsetterは存在する
+// console.log(teacher.subject);
 
-//⭐️setter
-teacher.subject = "faf";
+// //⭐️setter
+// teacher.subject = "faf";
 
 //⭐️static・・・インスタンスを作成しなくとも呼び出すことができる　※ES6でも利用可能
 Math.random();
@@ -181,8 +200,19 @@ console.log(Person2.isAdult(32));
 console.log(Teacher.species);
 console.log(Teacher.isAdult(32));
 
-const teacher2 = new Teacher("Quill", 1, "aaa");
-teacher2.explainJob();
+// クラス 'Teacher' のコンストラクターはプライベートであり、クラス宣言内でのみアクセス可能です。ts(2673)
+// const teacher2 = new Teacher("Quill", 1, "aaa");
+// teacher2.explainJob();
 
 //⭐️abstractクラスについてはインスタンス化できない→newできないので、下記はNG
 // new Person2();
+
+//⭐️シングルトンパターンの場合→クラスの中で使用する
+// クラス 'Teacher' のコンストラクターはプライベートであり、クラス宣言内でのみアクセス可能です。ts(2673)
+// →staticのみ利用可能になる
+const teacher = Teacher.getInstance();
+const teacher2 = Teacher.getInstance();
+
+//⭐️シングルトンパターンを利用すると、１つのクラスから１つのインスタンス化しかできないようにすることができる
+console.log(teacher);
+console.log(teacher2);

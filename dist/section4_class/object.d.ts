@@ -33,11 +33,13 @@ declare abstract class Person2 {
 declare let person4: typeof Person2;
 declare class Teacher extends Person2 {
     private _subject;
+    private static instance;
     explainJob(): void;
     get subject(): string;
     set subject(value: string);
-    constructor(name: string, age: number, _subject: string);
+    private constructor();
     greeting3(): void;
+    static getInstance(): Teacher;
 }
 declare const teacher: Teacher;
 declare const teacher2: Teacher;
