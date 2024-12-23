@@ -108,3 +108,14 @@ interface Human40 extends Nameable30 {
   age: number;
   greeting(message: string): void;
 }
+
+//⭐️interfaceでも関数の型定義ができる
+//addFuncはinterfaceでも書ける
+// type addFunc = (num1: number, num2: number) => number;
+interface addFunc {
+  (num1: number, num2: number): number;
+}
+let addFunc: addFunc;
+addFunc = (n1: number, n2: number) => {
+  return n1 + n2;
+};
