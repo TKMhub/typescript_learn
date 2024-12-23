@@ -84,3 +84,27 @@ let develop2: Human = new Developer("Quill", 38, 3);
 // ※implementsされているところのreadonlyは無視することが可能
 develop.name = "aaa";
 // develop2.name = "aaa"; →NG
+
+interface Nameable {
+  name: string;
+}
+
+//⭐️interfaceもextends可能・・・複数可能
+interface Human20 extends Nameable {
+  age: number;
+  greeting(message: string): void;
+}
+
+//⭐️ typeエイリアスのextendsも可能
+type Nameable30 = {
+  name: string;
+};
+
+//⭐️ typeエイリアスのextendsも可能
+interface Human40 extends Nameable30 {
+  // extendsにある要素を持っていたら？
+  //継承元の型が、継承先の型に代入できる限り、可能である
+  name: string;
+  age: number;
+  greeting(message: string): void;
+}
