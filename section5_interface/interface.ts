@@ -8,7 +8,8 @@
 
 //⭐️typeエイリアス
 type Human10 = {
-  name: string;
+  //⭐️readonlyのみ、interfaceに利用することができる
+  readonly name: string;
   age: number;
 };
 
@@ -24,7 +25,8 @@ let developer10: Human10;
 //💫interfaceはオブジェクトのみ→絶対にオブジェクトを指し示す
 //typeエイリアスはなんでもいける
 interface Human {
-  name: string;
+  //⭐️readonlyのみ、interfaceに利用することができる
+  readonly name: string;
   age: number;
   //⭐️オブジェクトの中の関数の型注釈①
   //   greeting: (message: string) => void;
@@ -71,3 +73,14 @@ const tmpDeveloper = {
 //構造的部分型・・・制限が緩い型に対しては制限が厳しい型を入れることができる
 const user: Human = new Developer("Quill", 38, 3);
 const user10: Human = tmpDeveloper;
+
+//⭐️readonlyのために読み取り専用となっている
+//※初期化時のname, コンストラクタのnameについては問題なし
+// user.name = "a"; NG
+
+let develop = new Developer("Quill", 38, 3);
+let develop2: Human = new Developer("Quill", 38, 3);
+// コンストラクタのnameについてhpublicとなっているために、変更可能
+// ※implementsされているところのreadonlyは無視することが可能
+develop.name = "aaa";
+// develop2.name = "aaa"; →NG
