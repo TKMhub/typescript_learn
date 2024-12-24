@@ -56,15 +56,34 @@ class Developer implements Human {
     public age: number,
     public experience: number //これはinterfaceにはない
   ) {}
-  greeting(message: string): void {
-    console.log(message);
+  //⭐️パラメータにも"?"を付け加えることができる
+  // greeting(message?: string): void {
+  //⭐️デフォルト引数・・・パラメータが存在しない場合にはデフォルトで"Hello"となる
+  greeting(message: string = "Hello"): void {
+    if (message) {
+      console.log(message);
+    }
   }
 }
+
+// class Developer2 implements Human {
+//   name?: string;
+//   constractor(
+//     public age: number,
+//     public experience: number,
+//     initName?: string
+//   ) {
+//     if (initName) {
+//       this.name = initName;
+//     }
+//   }
+// }
 
 const tmpDeveloper = {
   name: "Quill",
   age: 38,
-  greeting(message: string) {
+  //⭐️オプショナルパラメータ・・・あってもなくてもいい
+  greeting(message?: string) {
     console.log(message);
   },
 };
@@ -87,7 +106,14 @@ develop.name = "aaa";
 
 interface Nameable {
   name: string;
+  //⭐️オプショナルプロパティ（extends継承もできるし、implementsにも使える）
+  nickName?: string;
 }
+
+const namable: Nameable = {
+  name: "Quill",
+  //nickNameはあってもなくても良くなる
+};
 
 //⭐️interfaceもextends可能・・・複数可能
 interface Human20 extends Nameable {
@@ -109,11 +135,16 @@ interface Human40 extends Nameable30 {
   greeting(message: string): void;
 }
 
-//⭐️interfaceでも関数の型定義ができる
+//⭐️interfaceでも関数の型定義ができる・・・javaScriptでは関数はオブジェクト
 //addFuncはinterfaceでも書ける
 // type addFunc = (num1: number, num2: number) => number;
 interface addFunc {
+  //コールシグネチャ
   (num1: number, num2: number): number;
+}
+interface addFunc2 {
+  //コンストラクタシグネチャ
+  new (num1: number, num2: number): number;
 }
 let addFunc: addFunc;
 addFunc = (n1: number, n2: number) => {
