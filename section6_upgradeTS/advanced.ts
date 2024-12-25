@@ -111,3 +111,12 @@ const input2 = document.getElementById("input") as HTMLInputElement;
 // input0.value = "inital input value";→NG
 input1.value = "inital input value";
 input2.value = "inital input value";
+
+//カッコを利用するやり方でも代入可能
+(<HTMLInputElement>document.getElementById("input")).value = "afaf";
+(document.getElementById("input") as HTMLInputElement).value = "afaf";
+
+//⭐️「!」 non-null assertion operator・・・nullの可能性がなくなる
+//if文などで利用すると楽
+//初期化の際や、if文の中で利用する
+const input3 = document.getElementById("input")!;
