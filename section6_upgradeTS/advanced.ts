@@ -74,8 +74,7 @@ function havePed(pet: Pet) {
   pet.speak();
 
   //⭐️タグ付きUnion （デザインパターン）
-  //
-  タグ変数を使って判別するのもあり;
+  //タグ変数を使って判別するのもあり;
 
   switch (pet.kind) {
     case "bird":
@@ -98,11 +97,17 @@ function havePed(pet: Pet) {
   }
 }
 havePed(new Bird());
-// havePed({
-//   speak() {
-//     console.log("hello");
-//   },
-//   fly() {
-//     console.log("pata-pata");
-//   },
-// });
+
+// <input id="input">にアクセス
+//const input: HTMLElement・・・interface
+const input0: HTMLElement = document.getElementById("input");
+
+//⭐️型アサーション・・・強制的明示的型宣言
+//⭐️型アサーション①<>
+//React利用時にはタグを利用すると紛らわしくなる
+const input1 = <HTMLInputElement>document.getElementById("input");
+//⭐️型アサーション②as・・・基本こちらでOK
+const input2 = document.getElementById("input") as HTMLInputElement;
+// input0.value = "inital input value";→NG
+input1.value = "inital input value";
+input2.value = "inital input value";
