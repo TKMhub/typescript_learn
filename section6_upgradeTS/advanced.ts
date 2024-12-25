@@ -74,7 +74,9 @@ function havePed(pet: Pet) {
   pet.speak();
 
   //⭐️タグ付きUnion （デザインパターン）
-  //タグ変数を使って判別するのもあり
+  //
+  タグ変数を使って判別するのもあり;
+
   switch (pet.kind) {
     case "bird":
       pet.fly();
