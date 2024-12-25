@@ -166,6 +166,7 @@ console.log(Teacher.isAdult(32));
 // →staticのみ利用可能になる
 const teacher = Teacher.getInstance();
 const teacher2 = Teacher.getInstance();
+//⭐️シングルトンパターンを利用すると、１つのクラスから１つのインスタンス化しかできないようにすることができる
 console.log(teacher);
 console.log(teacher2);
 //# sourceMappingURL=object.js.map
