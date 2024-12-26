@@ -137,3 +137,48 @@ const designer: Designer = {
 
 //indexシグネチャにより下記はエラーにならない
 console.log(designer.bbb);
+
+//⭐️関数のオーバーロード・・・関数定義の上にstringだったらstringを返すと定義することができる
+//オーバーロードする場合にはデフォルトの型などその他の型を認識しなくなる
+//順番によって優先順位が変わる。上から順番に先に当てはまったものが最優先
+//関数のオーバーロードは元の関数がとりえる型しか定義することはできない
+//元の関数の型に当てはまれば、処理の内容に関わらず、型を定義することができるため、処理の内容に注意
+//オーバーロードの場合、functionにより関数宣言をする必要がある
+//もしstringだったらstring
+function toUpperCase2(x: string): string;
+//もしnumberだったらnumber
+function toUpperCase2(x: number): number;
+function toUpperCase2(x: string | number) {
+  if (typeof x === "string") {
+    return x.toUpperCase();
+  }
+  return x;
+}
+
+//これだと、stringとnumberに関わる関数しか利用できない
+const upperHello = toUpperCase2("hello");
+//型アサーションでstringと明示すればOKではあるが、、、。
+//開発者がわかっていれば、最初から型アサーションでOKだが、大変。。。
+const upperHello1 = toUpperCase2("hello") as string;
+
+interface DownloadData {
+  id: number;
+  user?: {
+    name?: {
+      first: string;
+      last: string;
+    };
+  };
+}
+
+const downloadedData: DownloadData = {
+  id: 1,
+};
+// ①オプショナルチェーンでエラーを回避
+console.log(downloadedData.user!.name);
+// ②if文でエラーを回避
+if (downloadedData.user) {
+  console.log(downloadedData.user.name);
+}
+//⭐️オプショナルチェーン　③「?」でエラーを回避
+console.log(downloadedData.user?.name?.first);
