@@ -120,3 +120,20 @@ input2.value = "inital input value";
 //if文などで利用すると楽
 //初期化の際や、if文の中で利用する
 const input3 = document.getElementById("input")!;
+
+//⭐️indexシグネチャ
+interface Designer {
+  name: string;
+  //indexシグネチャを使うと、他のものも全て型を揃える必要がある
+  [index: string]: string;
+}
+
+const designer: Designer = {
+  name: "Quill",
+  //indexシグネチャにより、なんでも付け加えられるようになる
+  role: "afaf",
+  aaa: "aaa",
+};
+
+//indexシグネチャにより下記はエラーにならない
+console.log(designer.bbb);
