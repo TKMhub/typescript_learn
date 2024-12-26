@@ -182,3 +182,8 @@ if (downloadedData.user) {
 }
 //⭐️オプショナルチェーン　③「?」でエラーを回避
 console.log(downloadedData.user?.name?.first);
+
+//⭐️NullishCoalescingにてデフォルト値を入れる
+//undefainf or nullの場合には、デフォルト値が入るようになる
+const userData = downloadedData.user ?? "no-user（デフォルト値）";
+const userData2 = downloadedData.user || "no-user（デフォルト値）"; //または三項演算子
