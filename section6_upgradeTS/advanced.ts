@@ -187,3 +187,15 @@ console.log(downloadedData.user?.name?.first);
 //undefainf or nullの場合には、デフォルト値が入るようになる
 const userData = downloadedData.user ?? "no-user（デフォルト値）";
 const userData2 = downloadedData.user || "no-user（デフォルト値）"; //または三項演算子
+
+//⭐️LookUp型（IndexAccess型）
+type id = DownloadData["id"];
+type id2 = DownloadData["user"];
+type id3 = DownloadData["user"]["name"];
+type id4 = DownloadData["id" | "user"];
+type StringArray = string[];
+type ArrayValue = StringArray[10];
+type ArrayValue2 = StringArray[number];
+type TupleType = [string, number, boolean];
+type TupleValue = TupleType[0];
+// type TupleValue2 = TupleType[100];→NG
