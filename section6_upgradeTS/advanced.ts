@@ -157,6 +157,34 @@ function toUpperCase2(x: string | number) {
 
 //これだと、stringとnumberに関わる関数しか利用できない
 const upperHello = toUpperCase2("hello");
+
+const upperHello2 = toUpperCase2;
+upperHello2("Hi");
+upperHello2(2);
+
+interface TmpFunc {
+  (x: string): string;
+  (x: number): number;
+}
+//⭐️オーバーロード応用：オーバーロードに全てに対応した関数を書かなければならない
+// const upperHello3: TmpFunc = function (x: string | number) {
+//   return 0;
+// };
+
+interface FuncA {
+  (a: number, b: string): number;
+  (a: string, b: number): number;
+}
+interface FuncB {
+  (a: string): number;
+}
+let intersectionFunc: FuncA & FuncB;
+//オーバーローされる順番が変わる
+let intersectionFunc2: FuncB & FuncA;
+intersectionFunc = function (a: number | string, b?: number | string) {
+  return 0;
+};
+
 //型アサーションでstringと明示すればOKではあるが、、、。
 //開発者がわかっていれば、最初から型アサーションでOKだが、大変。。。
 const upperHello1 = toUpperCase2("hello") as string;
