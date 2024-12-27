@@ -171,6 +171,7 @@ interface TmpFunc {
 //   return 0;
 // };
 
+//⭐️関数型のインターセクション型
 interface FuncA {
   (a: number, b: string): number;
   (a: string, b: number): number;
@@ -184,6 +185,22 @@ let intersectionFunc2: FuncB & FuncA;
 intersectionFunc = function (a: number | string, b?: number | string) {
   return 0;
 };
+
+//関数型のユニオン型・・・引数→インターセクション型、戻り値はユニオン型
+interface FuncC {
+  (a: number): number;
+}
+interface FuncD {
+  (a: string): string;
+}
+
+let unionFunc: FuncC | FuncD;
+// let unionFunc: (a: never) => string | number;・・・neverとなるため、使えない（引数に何も入れれない？？？）・・・下記の記述であればOK
+//FuncCでもFuncDでも入れることはできる。ただ、これを型を直接使う場合には、neverとなる
+unionFunc = function (a: string) {
+  return "hi";
+};
+unionFunc("hi");
 
 //型アサーションでstringと明示すればOKではあるが、、、。
 //開発者がわかっていれば、最初から型アサーションでOKだが、大変。。。
