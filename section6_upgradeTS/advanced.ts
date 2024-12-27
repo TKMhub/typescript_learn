@@ -199,3 +199,53 @@ type ArrayValue2 = StringArray[number];
 type TupleType = [string, number, boolean];
 type TupleValue = TupleType[0];
 // type TupleValue2 = TupleType[100];→NG
+
+let target = "hello";
+let source: "hello" = "hello";
+target = source;
+// source = target; →NG
+
+enum Color {
+  RED,
+  BLUE,
+}
+enum Status {
+  RED,
+  BLUE,
+}
+// let targe2: Color;
+let targe2 = Color.RED;
+let targe3 = Status.RED;
+let source2 = 100;
+// enum型の中にnumber型を入れることは例外的に可能・・・enum型は型安全上で問題があるので、慎重に利用する必要がある
+targe2 = source2; //OK
+source2 = targe2; //OK
+// targe2 = targe3;・・・NG（名前で型を区別する）→enumについては名前的片付けと呼ばれている
+
+let target10 = function (a: string, b: string) {};
+let source10 = function (a: string) {};
+target10 = source10; //OK
+// source10 = target10; →NG　・・・型の安全が保障されないため
+// →JavaScriptでは、引数が1つの場合にて引数が複数個指定されたとしても2つ目以降は無視されるという仕様がある
+// 2 個の引数が必要ですが、0 個指定されました。ts(2554)
+target10("hi", "hello");
+
+class AdvancedPerson {
+  name: string = "Peter";
+  age: number = 35;
+}
+class AdvancedCar {
+  name: string = "Prius";
+  age: number = 5;
+}
+class AdvancedCar2 {
+  name: string = "Prius";
+  //⭐️privateやprotectedがつくと、堅安全性が保たれなくなり、同様なクラス構成だとしても代入はできなくなる
+  //→構造的型付ではなくて、名前的型付となる
+  private age: number = 5;
+}
+let target100 = new AdvancedPerson();
+let source100 = new AdvancedCar();
+let source200 = new AdvancedCar2();
+target100 = source100;
+// target100 = source200;→NG（構造的型付ではなくて、名前的型付となる）
