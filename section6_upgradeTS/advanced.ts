@@ -300,7 +300,8 @@ target100 = source100;
 function advancedFn(...args: number[]) {}
 advancedFn(0, 2, 3, 4, 5, 6);
 //タプルもOK
-function advancedFn2(...args: [number, string?, boolean?, ...number[]]) {} //「？」オプショナルチェーンはお尻からつける
+//開発をする際に便利になるように配列の要素に名前をつけることができる。ホバーにて・・・function advancedFn2(age: number,
+function advancedFn2(...args: [age: number, string?, boolean?, ...number[]]) {} //「？」オプショナルチェーンはお尻からつける
 advancedFn2(0, "hi", false);
 advancedFn2(0, "hi");
 advancedFn2(0);
