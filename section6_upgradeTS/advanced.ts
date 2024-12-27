@@ -294,3 +294,15 @@ let source100 = new AdvancedCar();
 let source200 = new AdvancedCar2();
 target100 = source100;
 // target100 = source200;→NG（構造的型付ではなくて、名前的型付となる）
+
+//⭐️レストパラメータ
+//配列の場合
+function advancedFn(...args: number[]) {}
+advancedFn(0, 2, 3, 4, 5, 6);
+//タプルもOK
+function advancedFn2(...args: [number, string?, boolean?, ...number[]]) {} //「？」オプショナルチェーンはお尻からつける
+advancedFn2(0, "hi", false);
+advancedFn2(0, "hi");
+advancedFn2(0);
+advancedFn2(0, "hi", false, 1, 2, 3, 4, 12345678, 1, 2);
+//advancedFn2(0, "hi", 1, 2, 3, 4, 12345678, 1, 2); //エラー
