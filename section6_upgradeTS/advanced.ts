@@ -300,12 +300,40 @@ target100 = source100;
 function advancedFn(...args: number[]) {}
 advancedFn(0, 2, 3, 4, 5, 6);
 //タプルもOK
-//開発をする際に便利になるように配列の要素に名前をつけることができる。ホバーにて・・・function advancedFn2(age: number,
+//開発をする際に便利になるように配列の要素に名前をつけることができる。
+//ホバーにて・・・(age: number, name?: string, pets?: boolean, ...scores: number[]
 function advancedFn2(
-  ...args: [age: number, name?: string, pets?: boolean, ...scores: number[]]
-) {} //「？」オプショナルチェーンはお尻からつける
+  ...args: readonly [
+    age: number,
+    name?: string,
+    pets?: boolean,
+    ...scores: number[]
+  ]
+) {
+  //プロパティ 'push' は型 'readonly [age: number, name?: string, pets?: boolean, ...scores: number[]]' に存在しません。
+  // args.push();→NG
+} //「？」オプショナルチェーンはお尻からつける
 advancedFn2(0, "hi", false);
 advancedFn2(0, "hi");
 advancedFn2(0);
 advancedFn2(0, "hi", false, 1, 2, 3, 4, 12345678, 1, 2);
 //advancedFn2(0, "hi", 1, 2, 3, 4, 12345678, 1, 2); //エラー
+
+//⭐️constアサーション
+let milk = "milk" as const;
+let drink = milk; //let drink: "milk"
+// const array: readonly [10, 20];
+const array = [10, 20] as const;
+//objectにas constをつけたものをenumの代わりに使うこともある
+// const peter: {
+//   readonly name: "Peter";
+//   readonly age: 38;
+// };
+const peter = {
+  name: "Peter",
+  age: 38,
+} as const;
+
+typeof "hello";
+// PeterTypeにはpeterの型を取得・代入をすることができる
+type PeterType = typeof peter;
