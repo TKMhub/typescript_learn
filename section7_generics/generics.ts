@@ -84,3 +84,31 @@ const tmpDatabase: TmpDatabase<number> = {
   id: 3,
   data: [32],
 };
+
+interface Todo {
+  title: string;
+  text: string;
+}
+//⭐️ユーティリティ型・・・組込みのジェネリクス型
+//Partial・・・全てがオプショナルプロパティになる
+// type Todoable = {  title?: string;  text?: string;};
+type Todoable = Partial<Todo>;
+type Todoable2 = Readonly<Todo>;
+
+const fetchData = new Promise<string>((resolve) => {
+  setTimeout(() => {
+    resolve("hello");
+  }, 3000);
+});
+
+fetchData.then((data) => {
+  data.toUpperCase;
+});
+const vegetables: Array<string> = ["tomato", "brocoli", "aspara"];
+
+//⭐️デフォルトの型パラメータを指定することができる
+interface ResponseData<T extends { message: string } = any> {
+  data: T;
+  status: number;
+}
+let tmp100: Response;
