@@ -48,3 +48,24 @@ function copy10<T extends { name: string }, U extends keyof T>(
 console.log(copy10({ name: "Quill", age: 38 }, "name"));
 console.log(copy10({ name: "Quill", age: 38 }, "age"));
 // console.log(copy10({ name: "Quill", age: 38 }, "foo"));→NG
+
+//⭐️クラスにジェネリクスを追加する
+//union型と似ているのでは？？・・・union型では、同じ配列をpushする上で何を入れても良くなる[文字列, 数値, boolean]を許してしまう
+class LightDatabese<T extends string | number | boolean> {
+  private data: T[] = [];
+  add(item: T) {
+    this.data.push(item);
+  }
+  remove(item: T) {
+    this.data.splice(this.data.indexOf(item), 1);
+  }
+  get() {
+    return this.data;
+  }
+}
+const stringLightDatabase = new LightDatabese<string>();
+stringLightDatabase.add("Apple");
+stringLightDatabase.add("Grape");
+stringLightDatabase.add("Banana");
+stringLightDatabase.remove("Banana");
+console.log(stringLightDatabase.get());
