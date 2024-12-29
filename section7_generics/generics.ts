@@ -69,3 +69,18 @@ stringLightDatabase.add("Grape");
 stringLightDatabase.add("Banana");
 stringLightDatabase.remove("Banana");
 console.log(stringLightDatabase.get());
+
+//⭐️interfaceやtypeにもGenericsを利用することができる
+interface TmpDatabase<T> {
+  id: number;
+  data: T[];
+}
+type TmpDatabase10<T> = {
+  id: number;
+  data: T[];
+};
+//型にもGenericsを利用することができる
+const tmpDatabase: TmpDatabase<number> = {
+  id: 3,
+  data: [32],
+};
