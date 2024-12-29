@@ -30,3 +30,21 @@ function copy2<T extends { name: string }>(value: T): T {
 }
 console.log(copy2({ name: "Quill" }));
 // console.log(copy2({ last: "Quill" }));→NG
+
+//⭐️keyof演算子
+//オブジェクトのキーのユニオン型を作成する方法
+//type K = "name" | "age"
+type K = keyof { name: string; age: number };
+
+//Tのkey（valueに渡される型（つまりオブジェクト（name, age）））のunion型がUとなる
+// U・・・name |age
+function copy10<T extends { name: string }, U extends keyof T>(
+  value: T,
+  key: U
+): T {
+  value[key];
+  return value;
+}
+console.log(copy10({ name: "Quill", age: 38 }, "name"));
+console.log(copy10({ name: "Quill", age: 38 }, "age"));
+// console.log(copy10({ name: "Quill", age: 38 }, "foo"));→NG
