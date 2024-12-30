@@ -151,3 +151,10 @@ type DistributiveConditionalTypes = "tomato" | "pumpkin" extends "tomato"
   : boolean;
 type DistributiveConditionalTypes2<T> = T extends "tomato" ? number : boolean;
 let tmp4: DistributiveConditionalTypes2<"tomato" | "pumpkin">;
+let tmp5: NonNullable<string | null>;
+let tmp6: ReturnType<() => void>;
+
+//⭐️templateLiteral型
+type FirstName = "John" | "taku" | "ike";
+type LastName = "Lennon" | "name1";
+type UserName = `${FirstName}-${LastName}`;
