@@ -135,3 +135,19 @@ type MappedTypes3 = {
 type MappedTypes4 = {
   -readonly [P in "tomato" | "pumpkin"]-?: string;
 };
+
+//⭐️ConditionalTypes・・・型のif文
+//三項演算子に近いパターン
+type ConditionalTypes = "tomato" extends string ? number : boolean;
+type ConditionalTypes2 = string extends "tomato" ? number : boolean;
+type ConditionalTypesInfer = { tomato: "tomato" } extends { tomato: infer R }
+  ? R
+  : boolean;
+type ConditionalTypesInfer2 = { tomato: string } extends { tomato: infer R }
+  ? R
+  : boolean;
+type DistributiveConditionalTypes = "tomato" | "pumpkin" extends "tomato"
+  ? number
+  : boolean;
+type DistributiveConditionalTypes2<T> = T extends "tomato" ? number : boolean;
+let tmp4: DistributiveConditionalTypes2<"tomato" | "pumpkin">;
