@@ -133,5 +133,5 @@ type MappedTypes3 = {
   readonly [P in "tomato" | "pumpkin"]?: string;
 };
 type MappedTypes4 = {
-  -readonly [P in "tomato" | "pumpkin"]?: string;
+  -readonly [P in "tomato" | "pumpkin"]-?: string;
 };
