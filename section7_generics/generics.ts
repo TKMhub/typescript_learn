@@ -112,3 +112,26 @@ interface ResponseData<T extends { message: string } = any> {
   status: number;
 }
 let tmp100: Response;
+
+//⭐️MappedTypes・・・型のfor文
+interface Vegetables {
+  tomato: string;
+  pumpkin: string;
+}
+let tmp3: keyof Vegetables;
+type MappedTypes10 = {
+  [P in keyof Vegetables]: P;
+};
+type MappedTypes = {
+  [P in "tomato" | "pumpkin"]: P;
+};
+type MappedTypes2 = {
+  [P in "tomato" | "pumpkin"]: string;
+};
+//readonlyと?と-readonly
+type MappedTypes3 = {
+  readonly [P in "tomato" | "pumpkin"]?: string;
+};
+type MappedTypes4 = {
+  -readonly [P in "tomato" | "pumpkin"]?: string;
+};
