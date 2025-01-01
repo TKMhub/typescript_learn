@@ -37,6 +37,7 @@ console.log(copy10({ name: "Quill", age: 38 }, "name"));
 console.log(copy10({ name: "Quill", age: 38 }, "age"));
 // console.log(copy10({ name: "Quill", age: 38 }, "foo"));→NG
 //⭐️クラスにジェネリクスを追加する
+//union型と似ているのでは？？・・・union型では、同じ配列をpushする上で何を入れても良くなる[文字列, 数値, boolean]を許してしまう
 class LightDatabese {
     constructor() {
         this.data = [];
@@ -57,4 +58,23 @@ stringLightDatabase.add("Grape");
 stringLightDatabase.add("Banana");
 stringLightDatabase.remove("Banana");
 console.log(stringLightDatabase.get());
+//型にもGenericsを利用することができる
+const tmpDatabase = {
+    id: 3,
+    data: [32],
+};
+const fetchData = new Promise((resolve) => {
+    setTimeout(() => {
+        resolve("hello");
+    }, 3000);
+});
+fetchData.then((data) => {
+    data.toUpperCase;
+});
+const vegetables = ["tomato", "brocoli", "aspara"];
+let tmp100;
+let tmp3;
+let tmp4;
+let tmp5;
+let tmp6;
 //# sourceMappingURL=generics.js.map
