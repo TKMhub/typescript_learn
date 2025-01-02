@@ -31,13 +31,65 @@ function Component(template: string, selector: string) {
   };
 }
 
+function PropertyLogging(target: any, propertyKey: string) {
+  console.log("propertyLogging");
+  console.log(target);
+  console.log(propertyKey);
+}
+function enumerable(isEnumerable: boolean) {
+  return function (
+    target: any,
+    propertyKey: string,
+    descriptor: PropertyDecorator
+  ) {
+    return {
+      enumerable: isEnumerable,
+    };
+  };
+}
+function AccessorLogging(target: any, propertyKey: string) {
+  console.log("propertyLogging");
+  console.log(target);
+  console.log(propertyKey);
+}
+
+function ParameterLogging(target: any, propertyKey: string) {
+  console.log("propertyLogging");
+  console.log(target);
+  console.log(propertyKey);
+}
+
 //デコレータは複数同時に使用することができる・・・実行する順番としては、下から上に実行される
 @Component("<h1>{{name}}</h1>", "#app")
 @Logging("Logging User")
 class User {
+  @PropertyLogging
+  static name2 = "Quill";
   name = "Quill";
   constructor() {
     console.log("User was created!");
+  }
+}
+@Component("<h1>{{name}}</h1>", "#app")
+@Logging("Logging User")
+class User2 {
+  @PropertyLogging
+  static name2 = "Quill";
+  name = "Quill";
+  constructor(private _age: number) {
+    console.log("User was created!");
+  }
+  //⭐️AccessorLogging
+  @AccessorLogging
+  get age() {
+    return this._age;
+  }
+  set age(value) {
+    this.age = value;
+  }
+  // @enumerable(false)
+  greeting(message: string) {
+    console.log("Hello");
   }
 }
 
