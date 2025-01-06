@@ -1,7 +1,21 @@
-class Score {
+interface Scoreable {
+  readonly totalScore: number;
+  render(): void;
+}
+interface Foodable {
+  element: HTMLDivElement;
+  clickEventHandler(): void;
+}
+interface Foodsable {
+  elements: NodeListOf<HTMLDivElement>;
+  readonly activeElements: HTMLDivElement[];
+  readonly activeElementsScore: number[];
+}
+
+class Score implements Scoreable {
   get totalScore() {
     const foods = new Foods();
-    return foods.activeElementsStore.reduce((total, score) => total + score, 0);
+    return foods.activeElementsScore.reduce((total, score) => total + score, 0);
   }
 
   render() {
@@ -11,7 +25,7 @@ class Score {
   }
 }
 
-class Food {
+class Food implements Foodable {
   constructor(public element: HTMLDivElement) {
     element.addEventListener("click", this.clickEventHandler.bind(this));
   }
@@ -22,7 +36,7 @@ class Food {
   }
 }
 
-class Foods {
+class Foods implements Foodsable {
   elements = document.querySelectorAll<HTMLDivElement>(".food");
   private _activeElements: HTMLDivElement[] = [];
   private _activeElementsStore: number[] = [];
@@ -35,7 +49,7 @@ class Foods {
     });
     return this._activeElements;
   }
-  get activeElementsStore() {
+  get activeElementsScore() {
     this._activeElementsStore = [];
     this.activeElements.forEach((element) => {
       const foodScore = element.querySelector(".food_score");
