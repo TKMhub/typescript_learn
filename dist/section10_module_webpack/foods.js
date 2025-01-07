@@ -1,24 +1,8 @@
-class Score {
-    get totalScore() {
-        const foods = new Foods();
-        return foods.activeElementsScore.reduce((total, score) => total + score, 0);
-    }
-    render() {
-        document.querySelector(".score__number").textContent = String(this.totalScore);
-    }
-}
-class Food {
-    constructor(element) {
-        this.element = element;
-        element.addEventListener("click", this.clickEventHandler.bind(this));
-    }
-    clickEventHandler() {
-        this.element.classList.toggle("food--active");
-        const score = new Score();
-        score.render();
-    }
-}
-class Foods {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Foods2 = void 0;
+const food_1 = require("./food");
+class Foods2 {
     get activeElements() {
         this._activeElements = [];
         this.elements.forEach((element) => {
@@ -43,9 +27,9 @@ class Foods {
         this._activeElements = [];
         this._activeElementsStore = [];
         this.elements.forEach((element) => {
-            new Food(element);
+            new food_1.Food2(element);
         });
     }
 }
-const foods = new Foods();
-//# sourceMappingURL=food-app.js.map
+exports.Foods2 = Foods2;
+//# sourceMappingURL=foods.js.map
