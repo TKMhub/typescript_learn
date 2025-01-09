@@ -7,7 +7,11 @@ import { Foodsable as FoodLostable } from "./interfaces";
 import * as interfaces from "./interfaces";
 //④デフォルトexport
 import asdfghDefault from "./interfaces";
+//⭐️ →2回importされていたとしても、実行自体は一回のみ行われる
 import { Food2 } from "./food";
+
+//⭐️単純にファイルが実行されるだけ
+import "./food";
 
 // export class Foods2 implements Foodsable {
 // export class Foods2 implements FoodLostable {

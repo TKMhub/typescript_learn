@@ -1,4 +1,6 @@
-import { Scoreable } from "./interfaces";
+//⭐️type only import・・・型の情報のみでimportする場合
+import type { Scoreable } from "./interfaces";
+// import type { Foods } from "./foods.js";
 
 export class Score2 implements Scoreable {
   get totalScore() {
