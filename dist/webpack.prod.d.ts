@@ -1,11 +1,10 @@
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
 export let mode: string;
 export let entry: string;
 export namespace output {
     let filename: string;
     let path: string;
-    let publicPath: string;
 }
-export let devtool: string;
 export namespace module {
     let rules: {
         test: RegExp;
@@ -16,3 +15,4 @@ export namespace module {
 export namespace resolve {
     let extensions: string[];
 }
+export let plugins: CleanWebpackPlugin[];
