@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  entry: "./src/section10_module_webpack/main.ts",
+  entry: "./section10_module_webpack/main.ts",
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
@@ -15,5 +15,8 @@ module.exports = {
         exclude: /node_modules/,
       },
     ],
+  },
+  resolve: {
+    extensions: [".ts", ".js"],
   },
 };

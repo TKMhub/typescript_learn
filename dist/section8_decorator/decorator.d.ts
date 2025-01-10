@@ -1,6 +1,8 @@
 declare function Logging(message: string): (constructor: Function) => void;
-declare function Component(template: string, selector: string): <T extends new (...args: any) => {
-    name: string;
+declare function Component(template: string, selector: string): <T extends {
+    new (...args: any): {
+        name: string;
+    };
 }>(constructor: T) => {
     new (...args: any): {
         name: string;
