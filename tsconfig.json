@@ -27,7 +27,7 @@
       "ES6",
       "DOM"
     ] /* Specify a set of bundled library declaration files that describe the target runtime environment. */,
-    // "jsx": "preserve",                                /* Specify what JSX code is generated. */
+    "jsx": "react-jsx" /* Specify what JSX code is generated. */,
     "experimentalDecorators": true /* Enable experimental support for legacy experimental decorators. */,
     // "emitDecoratorMetadata": true,                    /* Emit design-type metadata for decorated declarations in source files. */
     // "jsxFactory": "",                                 /* Specify the JSX factory function used when targeting React JSX emit, e.g. 'React.createElement' or 'h'. */
@@ -173,7 +173,7 @@
     //⭐️.d.tsの検査に関してはスキップ
     //重くならずに動作がサクサク
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
-  }
+  },
   //tscコマンドのコンパイルから除外する ワイルドカードOK
   //includeしたものがコンパイルされる
   // "include": ["index.ts"],
@@ -191,5 +191,5 @@
   //   "node_modules"
   // ]
   // files・・絶対パスや相対パスのみ指定可能
-  // "files": ["section1_3/tmp/compiler.ts"]
+  "files": ["section12_react/react.tsx"]
 }
